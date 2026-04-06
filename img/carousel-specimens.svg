@@ -1,0 +1,22 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080c13"/><stop offset="1" stop-color="#020407"/></linearGradient>
+<radialGradient id="a" cx="40%" cy="40%" r="35%"><stop stop-color="#ff4d5e" stop-opacity=".4"/><stop offset="1" stop-color="#ff4d5e" stop-opacity="0"/></radialGradient>
+<radialGradient id="b" cx="60%" cy="48%" r="32%"><stop stop-color="#64e8ff" stop-opacity=".3"/><stop offset="1" stop-color="#64e8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<circle cx="460" cy="420" r="250" fill="url(#a)"/>
+<circle cx="1100" cy="420" r="240" fill="url(#b)"/>
+<g fill="none" stroke="#cfecff" stroke-opacity=".26">
+<circle cx="460" cy="420" r="180"/><circle cx="460" cy="420" r="120"/><circle cx="1100" cy="420" r="160"/><circle cx="1100" cy="420" r="90"/>
+</g>
+<g>
+<rect x="270" y="240" width="380" height="360" rx="34" fill="#0d1219" stroke="#324552"/>
+<rect x="900" y="260" width="380" height="330" rx="34" fill="#0d1219" stroke="#324552"/>
+<path d="M430 300c90 0 150 70 150 140s-60 110-120 110-140-44-140-112 64-138 110-138z" fill="#ff6f7d" opacity=".64"/>
+<path d="M1060 320c84 0 130 42 130 120s-62 110-128 110-122-40-122-104 56-126 120-126z" fill="#79eeff" opacity=".55"/>
+</g>
+<text x="150" y="120" fill="#f6fbff" font-family="Arial" font-size="56" letter-spacing="8">SPECIMEN OBSERVATION ARRAY</text>
+<text x="150" y="820" fill="#93b3bf" font-family="Arial" font-size="28" letter-spacing="5">CLASSIFIED MUTATION SERIES / LIVE TISSUE MONITORING</text>
+</svg>

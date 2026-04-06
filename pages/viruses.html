@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbrella Dossiers</title>
+<meta name="description" content="Umbrella secure terminal v3 — viral dossiers, creator archive, facility map and classified chronology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="laboratory-fog"></div>
+<div class="alert-overlay"></div>
+<div class="alert-bars"></div>
+<div class="status-bar">
+  <div class="status-inner">
+    <div><span class="signal-dot"></span> Secure link active / Stockholm node / UMB-Blackline</div>
+    <div class="d-flex gap-3 align-items-center">
+      <span class="status-live-text">Threat monitor: live</span>
+      <button class="btn btn-sm btn-outline-light rounded-pill small-mono" onclick="toggleSound(this)">Sound: On</button>
+      <button class="btn btn-sm btn-outline-danger rounded-pill small-mono" data-toggle-alert>Red Alert</button>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-glass">
+  <div class="container-xl">
+    <a class="navbar-brand sound-trigger" href="../index.html">Umbrella Terminal</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-lg-2">
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="../index.html">Database</a></li>
+        <li class="nav-item"><a class="nav-link active sound-trigger" href="../pages/viruses.html">Dossiers</a></li>
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="../pages/creator.html">Kireev Archive</a></li>
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="../pages/archive.html">Chronology</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<audio preload="auto" data-sound="click" src="../audio/click.wav"></audio>
+<audio preload="auto" data-sound="hover" src="../audio/hover.wav"></audio>
+<audio preload="auto" data-sound="alarm" src="../audio/alarm.wav"></audio>
+
+
+<main class="pt-5">
+<section class="section-pad">
+  <div class="container-xl">
+    <div class="hero-panel p-4 p-lg-5 mb-5" data-aos="fade-up">
+      <div class="kicker mb-2">Umbrella dossiers</div>
+      <h1 class="section-title mb-3">Полный каталог вирусов</h1>
+      <p class="section-subtitle">Отдельные страницы-досье, фильтр по типу, жёсткая научно-художественная подача и единый режим классификации угроз.</p>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button class="filter-chip active" data-filter="all">Все</button>
+        <button class="filter-chip" data-filter="parasite">Паразит</button>
+        <button class="filter-chip" data-filter="bioweapon">Биооружие</button>
+        <button class="filter-chip" data-filter="mutagen">Мутаген</button>
+        <button class="filter-chip" data-filter="prototype">Прототип</button>
+      </div>
+    </div>
+    <div class="row g-4 mb-5">
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="60">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="biohazard mutagen">
+        <div class="scanline"></div>
+        <img src="../img/t-virus.svg" alt="T-Virus" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">T-Virus</h4><span class="badge-soft">OMEGA-RED</span>
+        </div>
+        <div class="text-muted-soft mb-3">мутаген / биооружие</div>
+        <p>Классический штамм для стремительного некроза тканей и коллапса личности. Идеален для массового заражения и быстрого развала инфраструктуры.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">82%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">мутаген / биооружие</div></div></div>
+        </div>
+        <a href="t-virus.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="120">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="prototype mutagen">
+        <div class="scanline"></div>
+        <img src="../img/g-virus.svg" alt="G-Virus" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">G-Virus</h4><span class="badge-soft">BLACK-CROWN</span>
+        </div>
+        <div class="text-muted-soft mb-3">прототип / мутаген</div>
+        <p>Гиперагрессивный прототип с непредсказуемыми скачками биомассы. Носитель превращается в автономную мутационную экосистему.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">97%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">прототип / мутаген</div></div></div>
+        </div>
+        <a href="g-virus.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="180">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="parasite bioweapon">
+        <div class="scanline"></div>
+        <img src="../img/las-plagas.svg" alt="Las Plagas" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">Las Plagas</h4><span class="badge-soft">CONTROL-9</span>
+        </div>
+        <div class="text-muted-soft mb-3">паразит / биооружие</div>
+        <p>Паразитарная система с сохранением части интеллекта носителя. Позволяет управлять заражённой массой почти как тактическим ресурсом.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">74%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">паразит / биооружие</div></div></div>
+        </div>
+        <a href="las-plagas.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="240">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="prototype biohazard">
+        <div class="scanline"></div>
+        <img src="../img/uroboros.svg" alt="Uroboros" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">Uroboros</h4><span class="badge-soft">EXTINCTION</span>
+        </div>
+        <div class="text-muted-soft mb-3">прототип / биооружие</div>
+        <p>Селективный штамм: слабые организмы поглощаются мгновенно, устойчивые получают чудовищную боевую морфологию.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">94%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">прототип / биооружие</div></div></div>
+        </div>
+        <a href="uroboros.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="300">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="mutagen aquatic">
+        <div class="scanline"></div>
+        <img src="../img/t-abyss.svg" alt="T-Abyss" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">T-Abyss</h4><span class="badge-soft">DEEP-SEA</span>
+        </div>
+        <div class="text-muted-soft mb-3">мутаген / морской</div>
+        <p>Штамм для водной среды, провоцирующий трансформации под давлением, холодом и высокой влажностью.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">79%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">мутаген / морской</div></div></div>
+        </div>
+        <a href="t-abyss.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="360">
+      <div class="virus-card h-100 sound-trigger" data-virus-type="prototype parasite">
+        <div class="scanline"></div>
+        <img src="../img/t-veronica.svg" alt="T-Veronica" class="frame-img mb-3">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h4 class="mb-1">T-Veronica</h4><span class="badge-soft">ROYAL-13</span>
+        </div>
+        <div class="text-muted-soft mb-3">прототип / паразит</div>
+        <p>Редкий штамм с высокой ценой за контроль. В отдельных случаях сохраняет интеллект и усиливает носителя до сверхчеловеческого уровня.</p>
+        <div class="row g-2 mb-3">
+          <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value fs-4">68%</div></div></div>
+          <div class="col-6"><div class="metric"><div class="label">Тип</div><div class="value fs-6">прототип / паразит</div></div></div>
+        </div>
+        <a href="t-veronica.html" class="btn btn-glow w-100">Открыть досье</a>
+      </div>
+    </div>
+    </div>
+    <div class="chart-wrap" data-aos="fade-up">
+      <div class="kicker mb-2">Comparison table</div>
+      <h2 class="section-title fs-2 mb-3">Таблица сравнения</h2>
+      <div class="table-responsive">
+        <table class="table table-dark table-striped align-middle mb-0">
+          <thead><tr><th>Штамм</th><th>Тип</th><th>Летальность</th><th>Угроза</th><th>Ключевые эффекты</th></tr></thead>
+          <tbody><tr><td>T-Virus</td><td>мутаген / биооружие</td><td>82%</td><td>OMEGA-RED</td><td>гипертермия / некроз мягких тканей</td></tr><tr><td>G-Virus</td><td>прототип / мутаген</td><td>97%</td><td>BLACK-CROWN</td><td>взрывной рост тканей / деформация костей</td></tr><tr><td>Las Plagas</td><td>паразит / биооружие</td><td>74%</td><td>CONTROL-9</td><td>вживление паразита / повышенная внушаемость</td></tr><tr><td>Uroboros</td><td>прототип / биооружие</td><td>94%</td><td>EXTINCTION</td><td>чёрные щупальцевые массы / тотальное поражение органов</td></tr><tr><td>T-Abyss</td><td>мутаген / морской</td><td>79%</td><td>DEEP-SEA</td><td>гиперчувствительность к воде / кожные разрывы</td></tr><tr><td>T-Veronica</td><td>прототип / паразит</td><td>68%</td><td>ROYAL-13</td><td>аномальная терморегуляция / насекомоподобные мутации</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer-min">
+  <div class="container-xl d-flex flex-column flex-md-row justify-content-between gap-2">
+    <div>Umbrella Terminal v3 / classified artistic archive</div>
+    <div><a href="../index.html" class="link-ghost">Return to database</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>window.addEventListener('DOMContentLoaded',()=>{if(window.gsap){gsap.registerPlugin(ScrollTrigger)} if(window.AOS){AOS.init({duration:850, once:false, offset:50});}});</script>
+<script src="../js/script.js"></script>
+
+</body>
+</html>

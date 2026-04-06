@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#020407"/></linearGradient>
+<radialGradient id="r" cx="50%" cy="45%" r="35%"><stop stop-color="#64e8ff" stop-opacity=".5"/><stop offset=".55" stop-color="#64e8ff" stop-opacity=".12"/><stop offset="1" stop-color="#64e8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="900" height="620" fill="url(#bg)"/>
+<circle cx="450" cy="310" r="180" fill="url(#r)"/>
+<g fill="none" stroke="#64e8ff" stroke-opacity=".55">
+<circle cx="450" cy="310" r="165"/><circle cx="450" cy="310" r="110"/><circle cx="450" cy="310" r="60"/>
+<path d="M130 490C250 420 320 220 450 310S645 425 770 150"/>
+<path d="M145 170C270 270 350 110 450 310S650 520 760 435"/>
+</g>
+<g fill="#64e8ff" fill-opacity=".78">
+<circle cx="330" cy="260" r="15"/><circle cx="530" cy="380" r="12"/><circle cx="590" cy="260" r="18"/>
+</g>
+<text x="70" y="100" fill="#f7fbff" font-family="Arial" font-size="56" letter-spacing="6">T-VIRUS</text>
+<text x="72" y="560" fill="#b0cad6" font-family="Arial" font-size="24" letter-spacing="4">UMBRELLA SPECIMEN VISUAL / CONTAINMENT ARCHIVE</text>
+</svg>

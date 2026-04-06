@@ -1,0 +1,23 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#05111a"/><stop offset="1" stop-color="#02070a"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<g stroke="#64e8ff" stroke-opacity=".23">
+<path d="M0 160h1600M0 320h1600M0 480h1600M0 640h1600M0 800h1600"/>
+<path d="M160 0v900M320 0v900M480 0v900M640 0v900M800 0v900M960 0v900M1120 0v900M1280 0v900M1440 0v900"/>
+</g>
+<g fill="#64e8ff" fill-opacity=".1" stroke="#8cf2ff">
+<rect x="180" y="170" width="360" height="180" rx="24"/>
+<rect x="620" y="120" width="420" height="240" rx="24"/>
+<rect x="1080" y="220" width="290" height="160" rx="24"/>
+<rect x="280" y="430" width="300" height="220" rx="24"/>
+<rect x="680" y="440" width="430" height="250" rx="24"/>
+<rect x="1180" y="470" width="220" height="160" rx="24"/>
+</g>
+<circle cx="900" cy="565" r="18" fill="#ff4d5e"/>
+<circle cx="350" cy="260" r="12" fill="#64e8ff"/>
+<circle cx="1235" cy="300" r="12" fill="#64e8ff"/>
+<text x="120" y="100" fill="#f6fbff" font-family="Arial" font-size="58" letter-spacing="8">FACILITY GRID / SECTOR NAVIGATION</text>
+</svg>

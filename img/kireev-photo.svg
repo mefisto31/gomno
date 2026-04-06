@@ -1,0 +1,19 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d1219"/><stop offset="1" stop-color="#05080d"/></linearGradient>
+<radialGradient id="light" cx="50%" cy="25%" r="40%"><stop stop-color="#64e8ff" stop-opacity=".24"/><stop offset="1" stop-color="#64e8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<rect x="55" y="55" width="690" height="890" rx="30" fill="#0b1017" stroke="#2f4b5e"/>
+<circle cx="400" cy="290" r="170" fill="#131d28"/>
+<ellipse cx="400" cy="630" rx="210" ry="240" fill="#121c28"/>
+<path d="M320 260c0-60 42-108 80-108h10c40 0 82 45 82 108 0 55-32 120-87 120-56 0-85-65-85-120z" fill="#d8d9de"/>
+<path d="M300 238c18-84 188-84 214 6-40-34-79-36-111-34-34 2-68 12-103 28z" fill="#dce4ea"/>
+<rect x="305" y="510" width="190" height="250" rx="42" fill="#1e2a36"/>
+<rect x="365" y="500" width="70" height="95" rx="28" fill="#d8d9de"/>
+<path d="M288 510h225l88 244H206z" fill="#ebeff4"/>
+<rect x="150" y="810" width="500" height="68" rx="14" fill="#09131c" stroke="#34586d"/>
+<text x="180" y="854" fill="#dff7ff" font-family="Arial" font-size="28" letter-spacing="4">ALEXANDER KIREEV // LEAD ARCHITECT</text>
+<circle cx="400" cy="220" r="210" fill="url(#light)"/>
+</svg>

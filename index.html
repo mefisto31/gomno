@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbrella Terminal v3</title>
+<meta name="description" content="Umbrella secure terminal v3 — viral dossiers, creator archive, facility map and classified chronology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="loaderScreen" class="loader-screen">
+  <div class="loader-box">
+    <div class="kicker mb-3">Boot sequence</div>
+    <h1 class="display-title fs-1 mb-3">Initializing Secure Terminal</h1>
+    <p class="text-muted-soft mb-4">Загрузка архивов Umbrella: вирусные досье, личный архив Александра Киреева, карта комплекса и хронология экспериментов.</p>
+    <div class="progress-terminal mb-4"><span></span></div>
+    <div id="bootTerminal" class="terminal text-start"></div>
+  </div>
+</div>
+
+<div id="introScreen" class="intro-screen">
+  <div class="intro-card hud-corners text-center">
+    <div class="umbrella-mark"></div>
+    <div class="kicker mb-3">Access gate / Biohazard warning</div>
+    <h1 class="display-title fs-1 mb-3">Enter Umbrella Database</h1>
+    <div class="intro-warning mb-4">
+      Несанкционированный доступ к архивам о биооружии, паразитарных системах и мутагенных прототипах запрещён. Все данные представлены как часть художественного sci-fi архива.
+    </div>
+    <p class="text-muted-soft mb-4">Внутри: досье на T-Virus, G-Virus, Uroboros, Las Plagas, T-Abyss, T-Veronica, карта комплекса, экспериментальная хронология и личный архив Александра Киреева.</p>
+    <button id="enterDatabase" class="btn btn-glow btn-lg px-4">Enter Database</button>
+  </div>
+</div>
+
+
+<div class="laboratory-fog"></div>
+<div class="alert-overlay"></div>
+<div class="alert-bars"></div>
+<div class="status-bar">
+  <div class="status-inner">
+    <div><span class="signal-dot"></span> Secure link active / Stockholm node / UMB-Blackline</div>
+    <div class="d-flex gap-3 align-items-center">
+      <span class="status-live-text">Threat monitor: live</span>
+      <button class="btn btn-sm btn-outline-light rounded-pill small-mono" onclick="toggleSound(this)">Sound: On</button>
+      <button class="btn btn-sm btn-outline-danger rounded-pill small-mono" data-toggle-alert>Red Alert</button>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-glass">
+  <div class="container-xl">
+    <a class="navbar-brand sound-trigger" href="index.html">Umbrella Terminal</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-lg-2">
+        <li class="nav-item"><a class="nav-link active sound-trigger" href="index.html">Database</a></li>
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="pages/viruses.html">Dossiers</a></li>
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="pages/creator.html">Kireev Archive</a></li>
+        <li class="nav-item"><a class="nav-link  sound-trigger" href="pages/archive.html">Chronology</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<audio preload="auto" data-sound="click" src="audio/click.wav"></audio>
+<audio preload="auto" data-sound="hover" src="audio/hover.wav"></audio>
+<audio preload="auto" data-sound="alarm" src="audio/alarm.wav"></audio>
+
+
+<main>
+<section class="hero" id="heroEntry">
+  <div class="container-xl position-relative">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7">
+        <div class="hero-panel p-4 p-lg-5 hud-corners" data-aos="fade-up">
+          <div class="kicker mb-3">Umbrella / classified biomedical terminal</div>
+          <h1 class="display-title mb-4">Pharmaceutical front. <br>Secret viral empire.</h1>
+          <p class="lead text-muted-soft mb-4">Не витрина компании, а внутренняя база данных: штаммы, биомасса, контроль заражённых, личные записи создателя и карта исследовательского комплекса.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="pages/viruses.html" class="btn btn-glow sound-trigger">Open Dossiers</a>
+            <a href="pages/creator.html" class="btn btn-glow btn-danger-glow sound-trigger">Kireev Archive</a>
+          </div>
+          <div class="row g-3 mt-4">
+            <div class="col-sm-4"><div class="metric"><div class="label">Штаммов в базе</div><div class="value">06</div></div></div>
+            <div class="col-sm-4"><div class="metric"><div class="label">Уровень допуска</div><div class="value">X-9</div></div></div>
+            <div class="col-sm-4"><div class="metric"><div class="label">Живых протоколов</div><div class="value">31</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="glass-card p-3 p-lg-4" data-aos="fade-left">
+          <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+              <button data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+              <button data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/carousel-lab.svg" class="d-block w-100" alt="Лабораторный комплекс">
+                <div class="carousel-caption">
+                  <div class="badge-soft mb-2">Containment</div>
+                  <h5>Лаборатории глубокой изоляции</h5>
+                  <p class="mb-0">Стерильные зоны, биореакторы и красные коридоры допуска.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/carousel-specimens.svg" class="d-block w-100" alt="Образцы">
+                <div class="carousel-caption">
+                  <div class="badge-soft mb-2">Specimens</div>
+                  <h5>Наблюдение за активной мутацией</h5>
+                  <p class="mb-0">Живые образцы, паразитарные узлы и биомасса под давлением.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="img/carousel-map.svg" class="d-block w-100" alt="Карта комплекса">
+                <div class="carousel-caption">
+                  <div class="badge-soft mb-2">Navigation</div>
+                  <h5>Карта комплекса Umbrella</h5>
+                  <p class="mb-0">Кликабельные сектора, уровни риска и каналы доступа.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container-xl">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4 mb-4">
+      <div>
+        <div class="kicker mb-2">Virus registry</div>
+        <h2 class="section-title mb-3">Карточки угроз и мгновенное сканирование</h2>
+        <p class="section-subtitle">Карточки получили 3D/parallax-реакцию, фильтрацию по типу, открытие через модальные окна уровня CLASSIFIED / BIOHAZARD и переход к полным страницам-досье.</p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <button class="filter-chip active" data-filter="all">Все</button>
+        <button class="filter-chip" data-filter="parasite">Паразит</button>
+        <button class="filter-chip" data-filter="bioweapon">Биооружие</button>
+        <button class="filter-chip" data-filter="mutagen">Мутаген</button>
+        <button class="filter-chip" data-filter="prototype">Прототип</button>
+      </div>
+    </div>
+    <div class="row g-4">
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="50">
+      <div class="virus-card sound-trigger h-100" data-virus-type="biohazard mutagen">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">T</span></div>
+          <span class="badge-soft">мутаген / биооружие</span>
+        </div>
+        <h4 class="mt-4 mb-3">T-Virus</h4>
+        <p>Классический штамм для стремительного некроза тканей и коллапса личности. Идеален для массового заражения и быстрого развала инфраструктуры.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">гипертермия</li><li class="list-group-item dark-item">некроз мягких тканей</li><li class="list-group-item dark-item">потеря когнитивного контроля</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/t-virus.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-t-virus">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="100">
+      <div class="virus-card sound-trigger h-100" data-virus-type="prototype mutagen">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">G</span></div>
+          <span class="badge-soft">прототип / мутаген</span>
+        </div>
+        <h4 class="mt-4 mb-3">G-Virus</h4>
+        <p>Гиперагрессивный прототип с непредсказуемыми скачками биомассы. Носитель превращается в автономную мутационную экосистему.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">взрывной рост тканей</li><li class="list-group-item dark-item">деформация костей</li><li class="list-group-item dark-item">многократные вторичные формы</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/g-virus.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-g-virus">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="150">
+      <div class="virus-card sound-trigger h-100" data-virus-type="parasite bioweapon">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">L</span></div>
+          <span class="badge-soft">паразит / биооружие</span>
+        </div>
+        <h4 class="mt-4 mb-3">Las Plagas</h4>
+        <p>Паразитарная система с сохранением части интеллекта носителя. Позволяет управлять заражённой массой почти как тактическим ресурсом.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">вживление паразита</li><li class="list-group-item dark-item">повышенная внушаемость</li><li class="list-group-item dark-item">судороги</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/las-plagas.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-las-plagas">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="200">
+      <div class="virus-card sound-trigger h-100" data-virus-type="prototype biohazard">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">U</span></div>
+          <span class="badge-soft">прототип / биооружие</span>
+        </div>
+        <h4 class="mt-4 mb-3">Uroboros</h4>
+        <p>Селективный штамм: слабые организмы поглощаются мгновенно, устойчивые получают чудовищную боевую морфологию.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">чёрные щупальцевые массы</li><li class="list-group-item dark-item">тотальное поражение органов</li><li class="list-group-item dark-item">резкая селекция носителя</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/uroboros.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-uroboros">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="250">
+      <div class="virus-card sound-trigger h-100" data-virus-type="mutagen aquatic">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">T</span></div>
+          <span class="badge-soft">мутаген / морской</span>
+        </div>
+        <h4 class="mt-4 mb-3">T-Abyss</h4>
+        <p>Штамм для водной среды, провоцирующий трансформации под давлением, холодом и высокой влажностью.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">гиперчувствительность к воде</li><li class="list-group-item dark-item">кожные разрывы</li><li class="list-group-item dark-item">амфибийные деформации</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/t-abyss.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-t-abyss">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-xl-4 filter-target" data-aos="fade-up" data-aos-delay="300">
+      <div class="virus-card sound-trigger h-100" data-virus-type="prototype parasite">
+        <div class="scanline"></div>
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <div class="icon-bio"><span class="fw-bold">T</span></div>
+          <span class="badge-soft">прототип / паразит</span>
+        </div>
+        <h4 class="mt-4 mb-3">T-Veronica</h4>
+        <p>Редкий штамм с высокой ценой за контроль. В отдельных случаях сохраняет интеллект и усиливает носителя до сверхчеловеческого уровня.</p>
+        <ul class="list-group list-group-flush mb-4"><li class="list-group-item dark-item">аномальная терморегуляция</li><li class="list-group-item dark-item">насекомоподобные мутации</li><li class="list-group-item dark-item">смещение личности</li></ul>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="link-ghost sound-trigger" href="pages/t-veronica.html">Открыть досье →</a>
+          <button class="btn btn-sm btn-glow sound-trigger" data-bs-toggle="modal" data-bs-target="#modal-t-veronica">Сканировать</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5">
+        <div class="bio-card h-100" data-aos="fade-right">
+          <div class="kicker mb-2">Creator archive</div>
+          <h2 class="section-title fs-2 mb-3">Александр Киреев</h2>
+          <p class="text-muted-soft">Архитектор вирусных протоколов, системный идеолог Umbrella и автор линии экспериментов, где фармацевтика закончилась, а управляемая эволюция началась.</p>
+          <div class="quote-box mb-4">«Лекарство — это медленная форма власти. Вирус — мгновенная.»</div>
+          <div class="id-card mb-4">
+            <div class="hud-label mb-2">Личный идентификатор</div>
+            <div class="small-mono">ALEXANDER KIREEV / BLACKLAB-01 / clearance X-9 / access status unrestricted</div>
+          </div>
+          <a href="pages/creator.html" class="btn btn-glow sound-trigger">Open personal archive</a>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="terminal" data-aos="fade-left">
+          <div class="terminal-line">[LOG] 1988 — старт концепции мутагенной линии с военным потенциалом.</div>
+          <div class="terminal-line">[LOG] 1991 — T-Virus стабилизирован для массовых испытаний.</div>
+          <div class="terminal-line">[LOG] 1998 — G-Virus переведён в категорию неконтролируемых элитных прототипов.</div>
+          <div class="terminal-line">[LOG] 2002 — паразитарная ветка Las Plagas интегрирована в тактические модели.</div>
+          <div class="terminal-line">[LOG] 2006 — Uroboros признан инструментом селективного вымирания.</div>
+          <div class="terminal-line">[LOG] 2010 — T-Abyss и T-Veronica переоценены как штаммы специализированного превосходства.</div>
+          <div class="terminal-line">[STATUS] archive incomplete / fragments recovered / classified pages unlocked.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="map-panel h-100" data-aos="zoom-in-up">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <div class="kicker mb-2">Facility map</div>
+              <h2 class="section-title fs-2 mb-0">Карта комплекса Umbrella</h2>
+            </div>
+            <span class="badge-soft">Interactive sectors</span>
+          </div>
+          <div class="map-wrap">
+            <div class="map-grid"></div>
+            <div class="map-sector" style="left:6%;top:10%;width:26%;height:22%" data-title="Sector A — Virology Core" data-risk="Risk: OMEGA" data-detail="Главный вириологический сектор. Хранение эталонных образцов, секвенирование и запуск протоколов массовой инфекции."><h6>Sector A</h6><small>Virology Core</small></div>
+            <div class="map-sector" style="left:34%;top:8%;width:33%;height:27%" data-title="Sector B — Mutation Theatre" data-risk="Risk: BLACK" data-detail="Зона форсированных мутаций. Здесь испытывались G-Virus и поздние формы Uroboros на живой биомассе."><h6>Sector B</h6><small>Mutation Theatre</small></div>
+            <div class="map-sector" style="left:70%;top:18%;width:20%;height:18%" data-title="Sector C — Parasite Forge" data-risk="Risk: CONTROL" data-detail="Паразитарная лаборатория: Las Plagas, нейросвязь, подавление воли и модели дистанционного командования."><h6>Sector C</h6><small>Parasite Forge</small></div>
+            <div class="map-sector" style="left:12%;top:48%;width:22%;height:23%" data-title="Sector D — Cryo Basin" data-risk="Risk: ABYSS" data-detail="Холодовые бассейны и водные камеры давления для линии T-Abyss."><h6>Sector D</h6><small>Cryo Basin</small></div>
+            <div class="map-sector active" style="left:38%;top:50%;width:36%;height:28%" data-title="Sector E — Crown Vault" data-risk="Risk: ROYAL" data-detail="Частный архив, тронная лаборатория и капсула наблюдения Александра Киреева. Доступ уровня X-9."><h6>Sector E</h6><small>Crown Vault</small></div>
+            <div class="map-sector" style="left:77%;top:55%;width:15%;height:17%" data-title="Sector F — Disposal Shaft" data-risk="Risk: RED" data-detail="Шахта утилизации. Сброс нестабильных образцов, заражённых тел и неудачных штаммов."><h6>Sector F</h6><small>Disposal Shaft</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="bio-card map-side h-100" data-aos="fade-left">
+          <div class="kicker mb-2">Sector briefing</div>
+          <div id="sectorOutput">
+            <div class="badge-soft mb-3">Risk: ROYAL</div>
+            <h4 class="mb-3">Sector E — Crown Vault</h4>
+            <p class="text-muted-soft mb-0">Частный архив, тронная лаборатория и капсула наблюдения Александра Киреева. Здесь размещены личные записи, биоподпись, архитектура протоколов T-Veronica и резервные каналы тревоги.</p>
+          </div>
+          <hr class="border-secondary-subtle my-4">
+          <a href="pages/archive.html" class="btn btn-glow sound-trigger">Open chronology & sectors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="chart-wrap h-100" data-aos="fade-up">
+          <div class="kicker mb-2">Comparison block</div>
+          <h2 class="section-title fs-2 mb-3">Сравнение вирусов</h2>
+          <p class="text-muted-soft">Диаграмма показывает разницу между ключевыми образцами по летальности, скорости мутации, контролю носителя, инфекционности и военному потенциалу.</p>
+          <div style="height:420px"><canvas id="virusComparisonChart"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="bio-card h-100" data-aos="fade-up" data-aos-delay="100">
+          <div class="kicker mb-2">Operational notes</div>
+          <h2 class="section-title fs-2 mb-3">Что уже встроено</h2>
+          <div class="accordion" id="opsAccordion">
+            <div class="accordion-item dark-accordion">
+              <h2 class="accordion-header"><button class="accordion-button dark-button" data-bs-toggle="collapse" data-bs-target="#o1">Loader + Intro</button></h2>
+              <div id="o1" class="accordion-collapse collapse show" data-bs-parent="#opsAccordion"><div class="accordion-body text-muted-soft">Загрузка терминала, boot-лог, полноэкранный вход с предупреждением и кнопкой ENTER DATABASE.</div></div>
+            </div>
+            <div class="accordion-item dark-accordion">
+              <h2 class="accordion-header"><button class="accordion-button collapsed dark-button" data-bs-toggle="collapse" data-bs-target="#o2">HUD + Red Alert</button></h2>
+              <div id="o2" class="accordion-collapse collapse" data-bs-parent="#opsAccordion"><div class="accordion-body text-muted-soft">Пульсирующие индикаторы, скан-линии, тревожный режим с цветовым переключением и аудио-сигналом.</div></div>
+            </div>
+            <div class="accordion-item dark-accordion">
+              <h2 class="accordion-header"><button class="accordion-button collapsed dark-button" data-bs-toggle="collapse" data-bs-target="#o3">Multi-page dossiers</button></h2>
+              <div id="o3" class="accordion-collapse collapse" data-bs-parent="#opsAccordion"><div class="accordion-body text-muted-soft">У каждого штамма есть отдельная страница: симптомы, стадии, статус угрозы, среда применения и итоговый профиль.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer-min">
+  <div class="container-xl d-flex flex-column flex-md-row justify-content-between gap-2">
+    <div>Umbrella Terminal v3 / artistic sci-fi website / Bootstrap + GSAP + AOS + Chart.js</div>
+    <div>Pages: Database / Dossiers / Kireev Archive / Chronology</div>
+  </div>
+</footer>
+
+
+<div class="modal fade specimen-modal" id="modal-t-virus" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">T-Virus</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/t-virus.svg" alt="T-Virus" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Классический штамм для стремительного некроза тканей и коллапса личности. Идеален для массового заражения и быстрого развала инфраструктуры.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">82%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">OMEGA-RED</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>гипертермия</li><li>некроз мягких тканей</li><li>потеря когнитивного контроля</li><li>экстремальная агрессия</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>инкубация</li><li>нейронный срыв</li><li>тотальная перестройка поведения</li><li>устойчивая зомбификация</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/t-virus.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade specimen-modal" id="modal-g-virus" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">G-Virus</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/g-virus.svg" alt="G-Virus" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Гиперагрессивный прототип с непредсказуемыми скачками биомассы. Носитель превращается в автономную мутационную экосистему.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">97%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">BLACK-CROWN</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>взрывной рост тканей</li><li>деформация костей</li><li>многократные вторичные формы</li><li>практически неконтролируемая регенерация</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>инъекция</li><li>нестабильная адаптация</li><li>гипертрофия органов</li><li>чудовищная фазовая мутация</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/g-virus.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade specimen-modal" id="modal-las-plagas" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">Las Plagas</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/las-plagas.svg" alt="Las Plagas" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Паразитарная система с сохранением части интеллекта носителя. Позволяет управлять заражённой массой почти как тактическим ресурсом.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">74%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">CONTROL-9</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>вживление паразита</li><li>повышенная внушаемость</li><li>судороги</li><li>переход к коллективному поведению</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>внедрение</li><li>сращение с нервной системой</li><li>подавление воли</li><li>дистанционный контроль</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/las-plagas.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade specimen-modal" id="modal-uroboros" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">Uroboros</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/uroboros.svg" alt="Uroboros" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Селективный штамм: слабые организмы поглощаются мгновенно, устойчивые получают чудовищную боевую морфологию.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">94%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">EXTINCTION</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>чёрные щупальцевые массы</li><li>тотальное поражение органов</li><li>резкая селекция носителя</li><li>сверхплотная биомасса</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>контакт</li><li>клеточный отбор</li><li>массовое разрастание</li><li>доминирующая форма</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/uroboros.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade specimen-modal" id="modal-t-abyss" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">T-Abyss</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/t-abyss.svg" alt="T-Abyss" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Штамм для водной среды, провоцирующий трансформации под давлением, холодом и высокой влажностью.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">79%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">DEEP-SEA</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>гиперчувствительность к воде</li><li>кожные разрывы</li><li>амфибийные деформации</li><li>рост хищных рефлексов</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>инфицирование</li><li>водная активация</li><li>разрушение тканей</li><li>амфибийная адаптация</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/t-abyss.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade specimen-modal" id="modal-t-veronica" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+      <div class="scanline"></div>
+      <div class="modal-header">
+        <div>
+          <div class="kicker mb-2">Classified / Biohazard</div>
+          <h4 class="modal-title">T-Veronica</h4>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5"><img src="img/t-veronica.svg" alt="T-Veronica" class="frame-img"></div>
+          <div class="col-md-7">
+            <p class="text-muted-soft">Редкий штамм с высокой ценой за контроль. В отдельных случаях сохраняет интеллект и усиливает носителя до сверхчеловеческого уровня.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-6"><div class="metric"><div class="label">Летальность</div><div class="value">68%</div></div></div>
+              <div class="col-6"><div class="metric"><div class="label">Статус угрозы</div><div class="value fs-5">ROYAL-13</div></div></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><div class="hud-label mb-2">Симптомы</div><ul><li>аномальная терморегуляция</li><li>насекомоподобные мутации</li><li>смещение личности</li><li>нестабильные вспышки силы</li></ul></div>
+              <div class="col-md-6"><div class="hud-label mb-2">Стадии</div><ol><li>принятие штамма</li><li>биохимическая перестройка</li><li>симбиотический контроль</li><li>тронная форма</li></ol></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><a href="pages/t-veronica.html" class="btn btn-glow">Полное досье</a></div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>window.addEventListener('DOMContentLoaded',()=>{if(window.gsap){gsap.registerPlugin(ScrollTrigger)} if(window.AOS){AOS.init({duration:850, once:false, offset:50});}});</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

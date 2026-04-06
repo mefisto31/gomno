@@ -1,0 +1,21 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111a"/><stop offset="1" stop-color="#020406"/></linearGradient>
+<radialGradient id="r" cx="50%" cy="40%" r="55%"><stop stop-color="#64e8ff" stop-opacity=".22"/><stop offset=".6" stop-color="#64e8ff" stop-opacity=".04"/><stop offset="1" stop-color="#64e8ff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#g)"/>
+<rect x="120" y="120" width="1360" height="660" rx="36" fill="#0b1118" stroke="#22394b" />
+<g opacity=".6">
+<rect x="220" y="190" width="260" height="420" rx="22" fill="#0e1821" stroke="#2c5267"/>
+<rect x="540" y="190" width="260" height="420" rx="22" fill="#0e1821" stroke="#2c5267"/>
+<rect x="860" y="190" width="260" height="420" rx="22" fill="#0e1821" stroke="#2c5267"/>
+<rect x="1180" y="190" width="180" height="420" rx="22" fill="#0e1821" stroke="#2c5267"/>
+</g>
+<circle cx="790" cy="410" r="260" fill="url(#r)"/>
+<g stroke="#7aefff" stroke-opacity=".55">
+<line x1="180" y1="720" x2="1420" y2="720"/><line x1="180" y1="150" x2="1420" y2="150"/>
+</g>
+<text x="180" y="110" fill="#dffaff" font-family="Arial" font-size="54" letter-spacing="8">UMBRELLA BIOHAZARD COMPLEX</text>
+<text x="184" y="780" fill="#9bc8d8" font-family="Arial" font-size="26" letter-spacing="5">CONTAINMENT / VIROLOGY / WEAPONS RESEARCH</text>
+</svg>
